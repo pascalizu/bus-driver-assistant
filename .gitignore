@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
@@ -7,6 +8,19 @@ __pycache__/
 *.so
 
 # Distribution / packaging
+=======
+# Virtual Environment
+venv/
+env/
+.venv/
+ENV/
+
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+>>>>>>> 33764db (Initial commit: Bus Driver Assistant with vision, voice, and Gemini)
 .Python
 build/
 develop-eggs/
@@ -26,6 +40,7 @@ share/python-wheels/
 *.egg
 MANIFEST
 
+<<<<<<< HEAD
 # PyInstaller
 #   Usually these files are written by a python script from a template
 #   before PyInstaller builds the exe, so as to inject date/other infos into it.
@@ -216,3 +231,51 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+=======
+# Chroma database (local vector DB)
+events/
+*.db
+*.sqlite
+*.sqlite3
+
+# Media and large files
+*.mp4
+*.avi
+*.mov
+*.mkv
+*.jpg
+*.jpeg
+*.png
+*.bmp
+*.gif
+
+# Environment variables and secrets
+.env
+*.env
+api_key.txt
+credentials.json
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Temporary files
+temp/
+tmp/
+>>>>>>> 33764db (Initial commit: Bus Driver Assistant with vision, voice, and Gemini)
