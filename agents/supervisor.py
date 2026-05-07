@@ -1,14 +1,20 @@
 from langchain_core.messages import AIMessage
 
 def supervisor_agent(state):
-    """Supervisor Agent - Central coordinator that routes tasks to specialized agents."""
-    last_message = state["messages"][-1].content.lower()
+    """Supervisor Agent - Intelligent Router"""
+    query = state["messages"][-1].content.lower()
     
-    if "fatigue" in last_message or "drowsy" in last_message:
-        return {"messages": state["messages"] + [AIMessage(content="Supervisor: Routing to Driver Agent")]}
-    elif "passenger" in last_message or "hat" in last_message:
-        return {"messages": state["messages"] + [AIMessage(content="Supervisor: Routing to Passenger Agent")]}
-    elif "route" in last_message or "traffic" in last_message or "operation" in last_message:
-        return {"messages": state["messages"] + [AIMessage(content="Supervisor: Routing to Operations Agent")]}
+    if any(word in query for word in ["drowsy", "fatigue", "tired", "eyes", "sleepy"]):
+        route = "driver_agent"
+        msg = "Supervisor: Routing to Driver Agent (Fatigue detected in query)"
+    elif any(word in query for word in ["passenger", "hat", "people", "person", "count"]):
+        route = "passenger_agent"
+        msg = "Supervisor: Routing to Passenger Agent"
+    elif any(word in query for word in ["when", "log", "history", "event", "record", "before"]):
+        route = "query_agent"
+        msg = "Supervisor: Routing to Query Agent"
     else:
-        return {"messages": state["messages"] + [AIMessage(content="Supervisor: Routing to Query Agent")]}
+        route = "operations_agent"
+        msg = "Supervisor: Routing to Operations Agent"
+
+    return {"messages": state["messages"] + [AIMessage(content=msg)]}
