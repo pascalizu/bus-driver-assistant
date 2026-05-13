@@ -1,23 +1,59 @@
-# Bus Driver Assistant: Multi-Agent Vision AI with Voice Alerts
+# Bus Driver Assistant: Multi-Agent Vision AI System
 
-A real-time intelligent safety system for buses that monitors driver fatigue, tracks passengers, detects notable objects, provides automatic and manual voice announcements, and supports natural language queries over logged events.
+**Real-Time Driver Fatigue Monitoring | Passenger Safety | Voice Alerts | Intelligent Querying**
 
-## 🎯 Project Overview
+![Real-Time Camera Feed](screenshots/camera_feed.png)
 
-The **Bus Driver Assistant** is a multimodal AI system designed to enhance safety and operational efficiency in public and private buses. It combines computer vision, voice interaction, event logging, and intelligent querying to assist drivers and improve passenger safety.
+---
 
-### Key Features
-- **Real-time Driver Fatigue Detection** using MediaPipe eye landmark analysis
-- **Passenger Counting & Red Hat Detection** using YOLOv8 + HSV color filtering
-- **Automatic Voice Alert** for drowsy driver (with cooldown)
-- **Manual Voice Announcements** for passengers (press 'v' during monitoring)
-- **Event Logging** with Chroma vector database
-- **Gemini 3 Flash Powered Query Mode** — ask natural language questions about logged events
-- **Offline Voice Output** using pyttsx3
+## 📋 Table of Contents
+- [Overview](#overview)
+- [System in Action](#system-in-action)
+- [Key Features](#key-features)
+- [System Architecture](#system-architecture)
+- [Installation & Usage](#installation--usage)
+- [Significance](#significance)
 
-## 🚀 Quick Start
+---
 
-### 1. Clone the repository
-```bash
-git clone https://github.com/pascalizu/bus-driver-assistant.git
-cd bus-driver-assistant
+## 🎯 Overview
+
+The **Bus Driver Assistant** is a modular multi-agent AI system designed to enhance road safety in public transportation by monitoring driver fatigue, passenger activity, and providing intelligent voice and query capabilities.
+
+**Ready Tensor Module 2 Project**
+
+---
+
+## 📸 System in Action
+
+### Real-Time Monitoring Interface
+![Real-Time Camera Feed](screenshots/camera_feed.png)
+
+### Terminal + Voice + Query Mode
+![Terminal Output](screenshots/terminal_output.png)
+
+---
+
+## ✨ Key Features
+
+- Real-time fatigue detection using Eye Aspect Ratio (MediaPipe)
+- Passenger counting and red hat detection (YOLOv8)
+- Automatic & manual voice alerts (`pyttsx3`)
+- Multi-agent system with LangGraph
+- Semantic memory using ChromaDB
+- Natural language querying
+
+---
+
+## 🏗 System Architecture
+
+```mermaid
+flowchart TD
+    A[Webcam] --> B[Vision Tool]
+    B --> C[Supervisor Agent]
+    C --> D[Driver Agent]
+    C --> E[Passenger Agent]
+    C --> F[Query Agent]
+    D & E --> G[Chroma DB]
+    F --> G
+    D & E --> H[Voice Agent]
