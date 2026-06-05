@@ -7,54 +7,66 @@
 ---
 
 ## 📋 Table of Contents
-- [Overview](#overview)
-- [System in Action](#system-in-action)
-- [Key Features](#key-features)
-- [System Architecture](#system-architecture)
-- [Performance Evaluation](#performance-evaluation)
+- [Abstract](#abstract)
+- [Introduction](#introduction)
+- [Related Work](#related-work)
+- [Methodology](#methodology)
+- [Experiments & Results](#experiments--results)
+- [Discussion](#discussion)
+- [Conclusion](#conclusion)
+- [Acknowledgements](#acknowledgements)
 - [Installation & Usage](#installation--usage)
-- [Significance & Impact](#significance--impact)
+- [License](#license)
 
 ---
 
-## 🎯 Overview
+### Abstract
 
-The **Bus Driver Assistant** is a modular multi-agent AI system designed to enhance safety in public transportation. It monitors driver fatigue in real-time, tracks passengers, provides voice alerts, and supports natural language queries over logged events.
+This project presents **Bus Driver Assistant**, a modular multi-agent AI system developed for real-time safety monitoring in public transportation. The system leverages computer vision and intelligent agents to detect driver fatigue, monitor passengers, and deliver timely voice alerts.
 
-**Ready Tensor Module 2 Project** — Demonstrating Multi-Agent Systems, Computer Vision, Tool Integration, and Memory Management.
+The system utilizes **MediaPipe Face Mesh** for Eye Aspect Ratio (EAR)-based fatigue detection and **YOLOv8** for real-time passenger counting and object detection. A **LangGraph-based 5-agent architecture** (Supervisor, Driver, Passenger, Operations, and Query Agents) coordinates decision-making. Offline voice alerts are generated using `pyttsx3`, while **ChromaDB** enables semantic memory and natural language querying over logged events.
 
----
-
-## 📸 System in Action
-
-### Real-Time Monitoring Interface
-![Real-Time Camera Feed](https://github.com/pascalizu/bus-driver-assistant/raw/main/screenshots/camera_feed.png)
-
-### Terminal + Voice + Query Mode
-![Terminal Output](https://github.com/pascalizu/bus-driver-assistant/raw/main/screenshots/terminal_output.png)
+**Keywords**: Multi-Agent System, Computer Vision, Driver Fatigue Detection, LangGraph, Real-time Monitoring, Road Safety, Gemini AI
 
 ---
 
-## ✨ Key Features
+### Introduction
 
-- Real-time driver fatigue detection using Eye Aspect Ratio (MediaPipe)
-- Passenger counting and red hat detection with YOLOv8
-- Automatic & manual voice alerts using pyttsx3
-- Semantic event logging with ChromaDB
-- 5-Agent architecture orchestrated with LangGraph
-- Natural language querying
+Road safety remains a critical global challenge, with driver fatigue being one of the leading causes of accidents in public transportation. The **Bus Driver Assistant** was developed to address this issue by creating an intelligent, affordable, and proactive AI-powered safety system.
+
+This system actively monitors driver alertness, tracks passengers, delivers voice alerts, and supports natural language interaction through a multi-agent framework powered by LangGraph and Gemini 3 Flash.
 
 ---
 
-## 🏗 System Architecture
+### Related Work
 
-```mermaid
-flowchart TD
-    A[Webcam Feed] --> B[Vision Tool]
-    B --> C[Supervisor Agent]
-    C --> D[Driver Agent]
-    C --> E[Passenger Agent]
-    C --> F[Query Agent]
-    D & E --> G[Chroma DB]
-    F --> G
-    D & E --> H[Voice Agent]
+Driver fatigue detection has evolved from physiological sensors to vision-based methods. Notable works include Ji et al. (2004) on eye tracking and Bergasa et al. (2006) on real-time vigilance monitoring. Recent advances use CNNs and facial landmarks. YOLO models have been applied for passenger detection in public transport.
+
+Multi-agent frameworks like LangGraph are relatively new in safety applications. This project combines these technologies into a unified real-time system.
+
+---
+
+### Methodology
+
+The system is built using **LangGraph** for multi-agent orchestration. Computer vision is handled by MediaPipe (EAR calculation) and YOLOv8. Voice output uses pyttsx3, and memory is managed by ChromaDB.
+
+**Key Code Snippet - Vision Tool:**
+
+```python
+@tool
+def computer_vision_tool(task: str = "analyze") -> str:
+    cap = cv2.VideoCapture(0, cv2.CAP_DSHOW)
+    ret, frame = cap.read()
+    cap.release()
+    
+    rgb = cv2.cvtColor(frame, cv2.COLOR_BGR2RGB)
+    results = face_mesh.process(rgb)
+    
+    if results.multi_face_landmarks:
+        for lm in results.multi_face_landmarks:
+            left = lm.landmark[159].y - lm.landmark[145].y
+            right = lm.landmark[386].y - lm.landmark[374].y
+            ear = (left + right) / 2
+            if ear < 0.018:
+                return "Driver is DROWSY"
+    return "Driver is alert"
