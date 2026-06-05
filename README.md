@@ -1,8 +1,8 @@
-# Bus Driver Assistant: Multi-Agent Vision AI System
+# Bus Driver Assistant: Multi-Agent Vision AI System for Road Safety
 
 **Real-Time Driver Fatigue Monitoring | Passenger Safety | Voice Alerts | Intelligent Querying**
 
-![Real-Time Camera Feed](screenshots/camera_feed.png)
+![Bus Driver Assistant Banner](https://github.com/pascalizu/bus-driver-assistant/raw/main/screenshots/banner.png)
 
 ---
 
@@ -11,36 +11,37 @@
 - [System in Action](#system-in-action)
 - [Key Features](#key-features)
 - [System Architecture](#system-architecture)
+- [Performance Evaluation](#performance-evaluation)
 - [Installation & Usage](#installation--usage)
-- [Significance](#significance)
+- [Significance & Impact](#significance--impact)
 
 ---
 
 ## 🎯 Overview
 
-The **Bus Driver Assistant** is a modular multi-agent AI system designed to enhance road safety in public transportation by monitoring driver fatigue, passenger activity, and providing intelligent voice and query capabilities.
+The **Bus Driver Assistant** is a modular multi-agent AI system designed to enhance safety in public transportation. It monitors driver fatigue in real-time, tracks passengers, provides voice alerts, and supports natural language queries over logged events.
 
-**Ready Tensor Module 2 Project**
+**Ready Tensor Module 2 Project** — Demonstrating Multi-Agent Systems, Computer Vision, Tool Integration, and Memory Management.
 
 ---
 
 ## 📸 System in Action
 
 ### Real-Time Monitoring Interface
-![Real-Time Camera Feed](screenshots/camera_feed.png)
+![Real-Time Camera Feed](https://github.com/pascalizu/bus-driver-assistant/raw/main/screenshots/camera_feed.png)
 
 ### Terminal + Voice + Query Mode
-![Terminal Output](screenshots/terminal_output.png)
+![Terminal Output](https://github.com/pascalizu/bus-driver-assistant/raw/main/screenshots/terminal_output.png)
 
 ---
 
 ## ✨ Key Features
 
-- Real-time fatigue detection using Eye Aspect Ratio (MediaPipe)
-- Passenger counting and red hat detection (YOLOv8)
-- Automatic & manual voice alerts (`pyttsx3`)
-- Multi-agent system with LangGraph
-- Semantic memory using ChromaDB
+- Real-time driver fatigue detection using Eye Aspect Ratio (MediaPipe)
+- Passenger counting and red hat detection with YOLOv8
+- Automatic & manual voice alerts using pyttsx3
+- Semantic event logging with ChromaDB
+- 5-Agent architecture orchestrated with LangGraph
 - Natural language querying
 
 ---
@@ -49,7 +50,7 @@ The **Bus Driver Assistant** is a modular multi-agent AI system designed to enha
 
 ```mermaid
 flowchart TD
-    A[Webcam] --> B[Vision Tool]
+    A[Webcam Feed] --> B[Vision Tool]
     B --> C[Supervisor Agent]
     C --> D[Driver Agent]
     C --> E[Passenger Agent]
