@@ -70,50 +70,12 @@ def computer_vision_tool(task: str = "analyze") -> str:
                 return "Driver is DROWSY"
     return "Driver is alert"
 
-Experiments & Results
-Performance Evaluation
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-ComponentMetricResultNotesFatigue DetectionAccuracy91.5%200 test framesPassenger CountingAccuracy87.3%With zoningQuery Response TimeAverage1.8 secondsGemini 3 FlashVoice Alert ReliabilitySuccess Rate98%pyttsx3System StabilityUptime99.2%2-hour test
+Component,Metric,Result,Notes
+Fatigue Detection,Accuracy,91.5%,200 test frames
+Passenger Counting,Accuracy,87.3%,With zoning
+Query Response Time,Average,1.8 seconds,Gemini 3 Flash
+Voice Alert Reliability,Success Rate,98%,pyttsx3
+System Stability,Uptime,99.2%,2-hour test
 
 Discussion
 The development of the Bus Driver Assistant has been a comprehensive and educational journey. The integration of computer vision, voice, and multi-agent coordination created a cohesive and interactive system. Challenges such as MediaPipe compatibility and routing issues were successfully resolved.
@@ -146,3 +108,4 @@ python main.py
 Controls: v = Voice, q = Query Mode
 
 Built for Ready Tensor Module 2
+
