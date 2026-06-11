@@ -67,11 +67,8 @@ def computer_vision_tool(task: str = "analyze") -> str:
                 return "Driver is DROWSY"
     return "Driver is alert"
 
----
+```
 
-### Part 2: From Experiments to End (Copy this second)
-
-```markdown
 ### Experiments & Results
 
 **Performance Evaluation**
