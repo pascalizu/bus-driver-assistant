@@ -17,7 +17,6 @@
 - [Maintenance & Support](#maintenance--support)
 - [Acknowledgements](#acknowledgements)
 - [Installation & Usage](#installation--usage)
-- [License](#license)
 
 ---
 
@@ -25,7 +24,7 @@
 
 This project presents **Bus Driver Assistant**, a modular multi-agent AI system developed for real-time safety monitoring in public transportation. The system leverages computer vision and intelligent agents to detect driver fatigue, monitor passengers, and deliver timely voice alerts.
 
-The system utilizes **MediaPipe Face Mesh** for Eye Aspect Ratio (EAR)-based fatigue detection and **YOLOv8** for real-time passenger counting and object detection. A **LangGraph-based 5-agent architecture** (Supervisor, Driver, Passenger, Operations, and Query Agents) coordinates decision-making. Offline voice alerts are generated using `pyttsx3`, while **ChromaDB** enables semantic memory and natural language querying over logged events.
+The system utilizes **MediaPipe Face Mesh** for Eye Aspect Ratio (EAR)-based fatigue detection and **YOLOv8** for real-time passenger counting and object detection. A **LangGraph-based 5-agent architecture** coordinates decision-making. Offline voice alerts are generated using `pyttsx3`, while **ChromaDB** enables semantic memory and natural language querying.
 
 **Keywords**: Multi-Agent System, Computer Vision, Driver Fatigue Detection, LangGraph, Real-time Monitoring, Road Safety, Gemini AI
 
@@ -39,9 +38,7 @@ Road safety remains a critical global challenge, with driver fatigue being one o
 
 ### Related Work
 
-Driver fatigue detection has evolved from physiological sensors to vision-based methods. Notable works include Ji et al. (2004) on eye tracking and Bergasa et al. (2006) on real-time vigilance monitoring. Recent advances use CNNs and facial landmarks. YOLO models have been applied for passenger detection in public transport.
-
-Multi-agent frameworks like LangGraph are relatively new in safety applications. This project combines these technologies into a unified real-time system.
+Driver fatigue detection has evolved from physiological sensors to vision-based methods. This project combines MediaPipe, YOLOv8, LangGraph, and ChromaDB into a unified real-time system.
 
 ---
 
@@ -70,42 +67,61 @@ def computer_vision_tool(task: str = "analyze") -> str:
                 return "Driver is DROWSY"
     return "Driver is alert"
 
-Component,Metric,Result,Notes
-Fatigue Detection,Accuracy,91.5%,200 test frames
-Passenger Counting,Accuracy,87.3%,With zoning
-Query Response Time,Average,1.8 seconds,Gemini 3 Flash
-Voice Alert Reliability,Success Rate,98%,pyttsx3
-System Stability,Uptime,99.2%,2-hour test
+---
 
-Discussion
-The development of the Bus Driver Assistant has been a comprehensive and educational journey. The integration of computer vision, voice, and multi-agent coordination created a cohesive and interactive system. Challenges such as MediaPipe compatibility and routing issues were successfully resolved.
+### Part 2: From Experiments to End (Copy this second)
 
-Conclusion
-The Bus Driver Assistant stands as a complete, working prototype that showcases the power of multi-agent AI systems in real-world safety applications. It provides a strong foundation for future enhancements and demonstrates how AI can contribute to safer roads.
+```markdown
+### Experiments & Results
 
-Maintenance & Support
-Ongoing Maintenance
+**Performance Evaluation**
 
-The project is actively maintained by the author.
-Bug reports and feature requests can be submitted via GitHub Issues.
-The modular structure makes it easy to extend.
+| Component                    | Metric                        | Result          | Notes |
+|-----------------------------|-------------------------------|-----------------|-------|
+| Fatigue Detection           | Accuracy                      | 91.5%           | 200 test frames |
+| Passenger Counting          | Accuracy                      | 87.3%           | With zoning |
+| Query Response Time         | Average                       | 1.8 seconds     | Gemini 3 Flash |
+| Voice Alert Reliability     | Success Rate                  | 98%             | pyttsx3 |
+| System Stability            | Uptime                        | 99.2%           | 2-hour test |
 
-Support Channels
+---
 
-GitHub Issues (Primary)
-Comprehensive README.md documentation
+### Discussion
 
+The development of the Bus Driver Assistant has been a comprehensive journey. The integration of computer vision, voice, and multi-agent coordination created a cohesive and interactive system. Challenges such as MediaPipe compatibility and routing issues were successfully resolved.
 
-Acknowledgements
-I thank Grok by xAI for continuous guidance. Special thanks to my wife Peace Nwokike and daughter Miracle Nwokike for their support during this project.
+---
 
-Installation & Usage
-Bashgit clone https://github.com/pascalizu/bus-driver-assistant.git
+### Conclusion
+
+The **Bus Driver Assistant** stands as a complete, working prototype that showcases the power of multi-agent AI systems in real-world safety applications. It provides a strong foundation for future enhancements and demonstrates how AI can contribute to safer roads.
+
+---
+
+### Maintenance & Support
+
+**Ongoing Maintenance**  
+- Actively maintained by the author.  
+- Bug reports via GitHub Issues.  
+- Modular structure for easy extension.
+
+**Support Channels**  
+- GitHub Issues  
+- Comprehensive README.md
+
+---
+
+### Acknowledgements
+
+I thank **Grok by xAI** for continuous guidance. Special thanks to my wife **Peace Nwokike** and daughter **Miracle Nwokike** for their support.
+
+---
+
+### Installation & Usage
+
+```bash
+git clone https://github.com/pascalizu/bus-driver-assistant.git
 cd bus-driver-assistant
 venv\Scripts\activate
 pip install -r requirements.txt
 python main.py
-Controls: v = Voice, q = Query Mode
-
-Built for Ready Tensor Module 2
-
