@@ -69,6 +69,8 @@ def computer_vision_tool(task: str = "analyze") -> str:
 
 ```
 
+---
+
 ### Experiments & Results
 
 **Performance Evaluation**
