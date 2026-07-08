@@ -93,7 +93,7 @@ def computer_vision_tool(task: str = "analyze") -> str:
 
 **Additional Screenshots:**
 
-![Real-Time Camera Feed](https://github.com/pascalizu/bus-driver-assistant/raw/main/screenshots/camera_feed.png)
+<image-card alt="Real-Time Camera Feed" src="https://github.com/pascalizu/bus-driver-assistant/raw/main/screenshots/camera_feed.png" ></image-card>
 
 ![Terminal Output with Query](https://github.com/pascalizu/bus-driver-assistant/raw/main/screenshots/terminal_output.png)
 
