@@ -83,11 +83,20 @@ def computer_vision_tool(task: str = "analyze") -> str:
 | Voice Alert Reliability     | Success Rate                  | 98%             | pyttsx3 |
 | System Stability            | Uptime                        | 99.2%           | 2-hour test |
 
+---
+
 ### 🎥 Live Demo Video
 
 [![Watch Demo Video](https://github.com/pascalizu/bus-driver-assistant/raw/main/screenshots/camera_feed.png)](https://youtu.be/ZX-ffm6phC4)
 
 *Click the image to watch the full demonstration showing real-time fatigue detection, voice alerts, and query mode.*
+
+**Additional Screenshots:**
+
+![Real-Time Camera Feed](https://github.com/pascalizu/bus-driver-assistant/raw/main/screenshots/camera_feed.png)
+
+![Terminal Output with Query](https://github.com/pascalizu/bus-driver-assistant/raw/main/screenshots/terminal_output.png)
+
 ---
 
 ### Discussion
